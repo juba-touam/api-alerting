@@ -6,6 +6,15 @@ node {
         GIT_COMMIT_HASH = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true).trim()
     }
 
+    stage("Check Environment") {
+        steps {
+            sh "which sudo || echo 'sudo not found'"
+            sh "docker --version || echo 'docker not found'"
+            sh "whoami"
+            sh "uname -a"
+        }
+    }
+
     stage('Install dependencies') {
         sh "ls -l ${env.WORKSPACE}"
         sh "sudo docker run --rm -v ${env.WORKSPACE}:/app -w /app python:3.12 pip install -r /app/requirements.txt"
