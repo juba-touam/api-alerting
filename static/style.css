@@ -1,0 +1,35 @@
+body {
+    background-color: #f0f4f8;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 30px;
+}
+
+h1 {
+    color: #0056b3;
+    font-weight: 600;
+}
+
+label {
+    font-weight: 500;
+}
+
+input.form-control {
+    max-width: 300px;
+}
+
+.btn-group button {
+    min-width: 120px;
+    font-weight: bold;
+}
+
+#resultat {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #333;
+    font-size: 14px;
+    white-space: pre-wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
