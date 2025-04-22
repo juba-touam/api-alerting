@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-alerting
+  namespace: api-alerting
+  labels:
+    app: api-alerting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-alerting
+  template:
+    metadata:
+      labels:
+        app: api-alerting
+    spec:
+      containers:
+        - name: api-alerting
+          image: mchekini/api-alerting:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000

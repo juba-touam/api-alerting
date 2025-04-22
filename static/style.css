@@ -7,6 +7,12 @@ body {
 h1 {
     color: #0056b3;
     font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 label {
@@ -32,4 +38,5 @@ input.form-control {
     font-size: 14px;
     white-space: pre-wrap;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
