@@ -7,13 +7,11 @@ node {
     }
 
     stage("Check Environment") {
-        steps {
-            sh "which sudo || echo 'sudo not found'"
-            sh "docker --version || echo 'docker not found'"
-            sh "whoami"
-            sh "uname -a"
+            sh 'which sudo || echo "sudo not found"'
+            sh 'docker --version || echo "docker not found"'
+            sh 'whoami'
+            sh 'uname -a'
         }
-    }
 
     stage('Install dependencies') {
         sh "ls -l ${env.WORKSPACE}"
