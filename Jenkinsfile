@@ -8,11 +8,11 @@ node {
 
     stage('Install dependencies') {
         sh "ls -l ${env.WORKSPACE}"
-        sh "sudo docker run --rm -v ${env.WORKSPACE}:/app -w /app python:3.12 pip install -r /app/requirements.txt"
+        sh "docker run --rm -v ${env.WORKSPACE}:/app -w /app python:3.12 pip install -r /app/requirements.txt"
     }
 
     stage('Build Docker Image') {
-        sh "sudo docker build -t mchekini/api-alerting:$GIT_COMMIT_HASH ."
+        sh "docker build -t mchekini/api-alerting:$GIT_COMMIT_HASH ."
     }
 
     /*
@@ -23,9 +23,9 @@ node {
 
     stage("Push Docker image") {
         withCredentials([usernamePassword(credentialsId: 'mchekini', passwordVariable: 'password', usernameVariable: 'username')]) {
-            sh "sudo docker login -u $username -p $password"
-            sh "sudo docker push mchekini/api-alerting:$GIT_COMMIT_HASH"
-            sh "sudo docker rmi mchekini/api-alerting:$GIT_COMMIT_HASH"
+            sh "docker login -u $username -p $password"
+            sh "docker push mchekini/api-alerting:$GIT_COMMIT_HASH"
+            sh "docker rmi mchekini/api-alerting:$GIT_COMMIT_HASH"
         }
     }
 }
