@@ -3,15 +3,8 @@ node {
 
     stage("Checkout") {
         checkout scm
-        GIT_COMMIT_HASH = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true).trim()
+        GIT_COMMIT_HASH = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
     }
-
-    stage("Check Environment") {
-            sh 'which sudo || echo "sudo not found"'
-            sh 'docker --version || echo "docker not found"'
-            sh 'whoami'
-            sh 'uname -a'
-        }
 
     stage('Install dependencies') {
         sh "ls -l ${env.WORKSPACE}"
